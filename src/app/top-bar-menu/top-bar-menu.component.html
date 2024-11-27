@@ -1,0 +1,16 @@
+<div class="top-bar">
+	<div [ngStyle]="{'background-image': 'url(../../assets/images/title-bg.svg)'}"
+		(click)="onHome()"
+		class="title">
+		{{ title }}
+	</div>
+	<div class="options">
+		<div class="option" (click)="onLanguages()">Countries</div>
+		<div class="option">Stats</div>
+		<div class="option">Continents</div>
+		<div class="extra-options">
+			<i (click)="onHome()"
+				class="pi pi-home icon"></i>
+		</div>
+	</div>
+</div>

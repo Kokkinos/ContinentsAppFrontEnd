@@ -1,0 +1,59 @@
+@import "../../styles.scss";
+$topBarHeight: 60px;
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 22px;
+    height: $topBarHeight;
+
+    .title {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+
+        padding: 0 32px 0 12px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .options {
+        display: flex;
+        gap: 20px;
+
+        .option {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .extra-options {
+            border-left: 2px solid black;
+            display: flex;
+            align-items: center;
+            padding: 12px 24px;
+            gap: 24px;
+            background-color: $deepYellow;
+
+            .icon {
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+    }
+}

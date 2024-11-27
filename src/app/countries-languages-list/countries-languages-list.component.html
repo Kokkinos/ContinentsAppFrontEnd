@@ -1,0 +1,22 @@
+<div class="countries-table-container">
+	<p-table [columns]="cols"
+		[value]="data"
+		[tableStyle]="{ 'min-width': '50rem' }">
+		<ng-template pTemplate="header"
+			let-columns>
+			<tr>
+				<th *ngFor="let col of columns">{{ col.header }}</th>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="body"
+			let-rowData
+			let-columns="columns">
+			<tr (click)="onRowClick(rowData.id, rowData.name)"
+				class="row">
+				<td *ngFor="let col of columns">
+					{{ rowData[col.field] }}
+				</td>
+			</tr>
+		</ng-template>
+	</p-table>
+</div>

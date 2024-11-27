@@ -1,0 +1,18 @@
+.languages {
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    background-color: #f4f4ec;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+
+    .language {
+        border-radius: 8px;
+        background-color: white;
+        padding: 12px;
+        width: fit-content;
+
+    }
+}

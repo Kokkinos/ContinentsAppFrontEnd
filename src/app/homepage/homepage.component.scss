@@ -1,0 +1,39 @@
+@import "../../styles.scss";
+
+.homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4ec;
+    width: 100%;
+    height: 100%;
+}
+
+.option {
+    width: 50vw;
+    height: 100%;
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .option-text {
+        background-color: $deepYellow;
+        padding: 12px;
+        border-radius: 12px;
+        visibility: hidden;
+    }
+
+    &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+}
+
+.option:hover .option-text {
+    visibility: visible;
+}
