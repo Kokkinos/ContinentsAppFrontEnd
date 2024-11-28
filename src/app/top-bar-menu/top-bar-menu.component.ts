@@ -32,7 +32,7 @@ export class TopBarMenuComponent {
     }
 
     onHome() {
-        this.utilityService.setPageTitle('Qualco')
+        this.utilityService.setPageTitle('App')
         this.router.navigate(['/'])
     }
 
