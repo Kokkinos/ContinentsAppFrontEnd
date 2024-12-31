@@ -9,7 +9,7 @@ import { ICountry } from '../models/models.model';
 export class UtilityService {
     private readonly apiUrl = 'http://localhost:8080';
 
-    private pageTitleSubject = new BehaviorSubject<string>('Qualco');
+    private pageTitleSubject = new BehaviorSubject<string>('App');
     pageTitle$: Observable<string> = this.pageTitleSubject.asObservable();
 
     constructor(private http: HttpClient) { }
