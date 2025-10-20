@@ -1,8 +1,8 @@
 export interface ICountry {
-    id?: number;
-    name: string;
-    area: number;
-    countryCode2: string;
+  id?: number;
+  name: string;
+  area: number;
+  countryCode2: string;
 }
 
 export interface CountryStats {
@@ -19,16 +19,15 @@ export interface Language {
 }
 
 export interface CountryInfo {
-  continentName: string;
-  regionName: string;
-  countryStatsDTO: CountryStats;
-  // countryName: string;
-  // year: number;
-  // population: number;
-  // gdp: number;
+  continentName: string,
+  regionName: string,
+  countryName: string,
+  year: number,
+  population: number,
+  gdp: number
 }
 
 export interface Region {
   name: string;
-  code: string;
+  code?: string;
 }

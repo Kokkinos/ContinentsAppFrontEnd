@@ -9,27 +9,11 @@ import { Subscription } from 'rxjs';
     styleUrl: './top-bar-menu.component.scss'
 })
 export class TopBarMenuComponent {
-    private subscription!: Subscription;
-
-    title: string;
+    title = this.utilityService.pageTitle;
 
     constructor(
         private utilityService: UtilityService,
         private router: Router) { }
-
-    ngOnInit(): void {
-        this.subscription = this.utilityService.pageTitle$.subscribe(
-            (title) => {
-                this.title = title;
-            }
-        );
-    }
-
-    ngOnDestroy(): void {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
-        }
-    }
 
     onHome() {
         this.utilityService.setPageTitle('App')

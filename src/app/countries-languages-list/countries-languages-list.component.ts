@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { UtilityService } from '../shared/services/utility.service';
 import { Router } from '@angular/router';
 import { ICountry } from '../shared/models/models.model';
@@ -9,8 +9,7 @@ import { ICountry } from '../shared/models/models.model';
     styleUrl: './countries-languages-list.component.scss'
 })
 export class CountriesLanguagesListComponent {
-
-    data: ICountry[] = [];
+    countries = this.utilityService.countries;
 
     cols!: {
         field: string;
@@ -30,15 +29,7 @@ export class CountriesLanguagesListComponent {
             { field: 'countryCode2', header: 'Code' }
         ];
 
-        this.utilityService.getCountries()
-            .subscribe(
-                data => {
-                    this.data = data;
-                },
-                error => {
-                    console.error('Error from backend:', error);
-                }
-            );
+        this.utilityService.getCountries();
 
     }
 

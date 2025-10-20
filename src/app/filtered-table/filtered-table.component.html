@@ -1,7 +1,7 @@
 <div>
-    <p-dropdown [options]="regions" [(ngModel)]="selectedRegion" placeholder="Select a Region" (onChange)="onRegionChange()"></p-dropdown>
+    <p-dropdown [options]="regions()" optionLabel="name" optionValue="name" [(ngModel)]="selectedRegion" placeholder="Select a Region" (onChange)="onRegionChange()"></p-dropdown>
 </div>
-<table>
+<!-- <table>
     <thead>
         <tr>
             <td>Continent</td>
@@ -13,15 +13,35 @@
         </tr>
     </thead>
     <tbody>
-        @for(countryInfo of countryInfoList; track countryInfo.continentName) {
+        @for(countryInfo of countryInfo(); track countryInfo.continentName) {
             <tr>
                 <td>{{ countryInfo.continentName }}</td>
                 <td>{{ countryInfo.regionName }}</td>
-                <td>{{ countryInfo.countryStatsDTO.countryName }}</td>
-                <td>{{ countryInfo.countryStatsDTO.year }}</td>
-                <td>{{ countryInfo.countryStatsDTO.population }}</td>
-                <td>{{ countryInfo.countryStatsDTO.gdp }}</td>
+                <td>{{ countryInfo.countryName }}</td>
+                <td>{{ countryInfo.year }}</td>
+                <td>{{ countryInfo.population }}</td>
+                <td>{{ countryInfo.gdp }}</td>
             </tr>
         }
     </tbody>
-</table>
+</table> -->
+
+<p-table [columns]="cols"
+           [value]="countryInfo()"
+           [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header"
+                 let-columns>
+      <tr>
+        <th *ngFor="let col of columns">{{ col.header }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body"
+                 let-rowData
+                 let-columns="columns">
+      <tr class="row">
+        <td *ngFor="let col of columns">
+          {{ rowData[col.field] }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>

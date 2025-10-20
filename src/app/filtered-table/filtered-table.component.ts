@@ -15,55 +15,44 @@ import { SelectItem } from 'primeng/api';
   // imports: [DropdownModule, FormsModule]
 })
 export class FilteredTableComponent {
-    @Input() results?: CountryInfo[];
-    countryInfoList: CountryInfo[] = [];
-    unfilteredCountryInfoList: CountryInfo[] = [];
-    regions: SelectItem[] = [];
-    selectedRegion: string = ' ';
+  countryInfo = this.utilityService.countryInfo;
+  regions = this.utilityService.regions;
+  selectedRegion: string | null = null;
+
+  cols!: {
+    field: string;
+    header: string;
+  }[]
+
+  constructor(private utilityService: UtilityService) { }
 
 
-    constructor(private utilityService: UtilityService) { }
-    
+  ngOnInit(): void {
+    this.utilityService.setPageTitle('Country-Info')
+    this.utilityService.getCountryInfo();
+    this.utilityService.getRegions();
 
-    ngOnInit(): void {
-      this.utilityService.setPageTitle('Country-Info')
-  
-      // this.cols = [
-      //   { field: 'name', header: 'Name' },
-      //   { field: 'countryId', header: 'Country Code' },
-      //   { field: 'year', header: 'Year' },
-      //   { field: 'population', header: 'Population' },
-      //   { field: 'gdp', header: 'GDP' }
-      // ];
-      
+    this.cols = [
+      { field: 'continentName', header: 'Continent' },
+      { field: 'regionName', header: 'Region' },
+      { field: 'countryName', header: 'Country' },
+      { field: 'year', header: 'Year' },
+      { field: 'population', header: 'Population' },
+      { field: 'gdp', header: 'GDP' }
+    ]
+  }
 
-      // this.utilityService.getCombinedResults().subscribe(
-      //   countryInfoList => {
-      //     this.countryInfoList = countryInfoList;
-      //     this.unfilteredCountryInfoList = [...countryInfoList];
-      //     const uniqueRegions = Array.from(new Set(countryInfoList.map(info => info.regionName)));
-      //     this.regions = [...uniqueRegions.map(region => ({label : region, value: region}))];
-      //       // this.countryInfoList.map(info => ({label: info.regionName, value: info.regionName}));
-          
-      //     console.log(this.regions);
-      //   },
-      //   error => {
-      //     console.error('Error fetching countryStats:', error);
-      //   }
-      // );
-    }
+  // this.cols = [
+  //   { field: 'name', header: 'Name' },
+  //   { field: 'countryId', header: 'Country Code' },
+  //   { field: 'year', header: 'Year' },
+  //   { field: 'population', header: 'Population' },
+  //   { field: 'gdp', header: 'GDP' }
+  // ];
 
   onRegionChange(): void {
     console.log(this.selectedRegion);
-    console.log(this.unfilteredCountryInfoList);
-    if (this.selectedRegion) {
-      this.countryInfoList = this.unfilteredCountryInfoList.filter( (info) => (info.regionName.trim().toLowerCase() == this.selectedRegion.trim().toLowerCase()));
-      // this.countryInfoList = [{continentName: 'Asia', regionName: 'Asia', countryStatsDTO:{name:'Pakistan', countryId: 2, year: 2012, population: 312222, gdp: 201111, gdpPerPopulation: 2111}}];
-      // this.countryInfoList = [...this.unfilteredCountryInfoList];
-    }
-    else {
-      this.countryInfoList = [...this.unfilteredCountryInfoList];
-    }
-    console.log(this.countryInfoList);
   }
 }
+
+

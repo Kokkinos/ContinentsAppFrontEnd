@@ -1,6 +1,6 @@
 <div class="countries-table-container">
   <p-table [columns]="cols"
-           [value]="data"
+           [value]="countryStats()"
            [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header"
                  let-columns>

@@ -10,7 +10,7 @@ import { Language } from '../../shared/models/models.model';
 })
 export class CountryLangDetailsComponent {
 
-    countryLanguages: Language[] = [];
+    countryLanguages = this.utilityService.languages;
 
     constructor(private route: ActivatedRoute,
         private utilityService: UtilityService,) { }
@@ -20,16 +20,8 @@ export class CountryLangDetailsComponent {
             const name = params.get('name');
             this.utilityService.setPageTitle(name);
             const code = params.get('code');
-            
-            this.utilityService.getCountryLanguages(code)
-                .subscribe(
-                    data => {
-                        this.countryLanguages = data;
-                    },
-                    error => {
-                        console.error('Error from backend:', error);
-                    }
-                );
+
+            this.utilityService.getCountryLanguages(code);
         });
     }
 }

@@ -9,7 +9,7 @@ import { UtilityService } from '../shared/services/utility.service';
 	styleUrl: './country-stats.component.scss'
 })
 export class CountryStatsComponent {
-	data: CountryStats[] = [];
+	countryStats = this.utilityService.countryStats;
 
 	cols!: {
 		field: string;
@@ -29,14 +29,7 @@ export class CountryStatsComponent {
 			{ field: 'gdp', header: 'GDP' }
 		];
 
-		this.utilityService.getMaxGdpPerPopulation().subscribe(
-			data => {
-				this.data = data;
-			},
-			error => {
-				console.error('Error fetching countryStats:', error);
-			}
-		);
+		this.utilityService.getMaxGdpPerPopulation();
 	}
 
 }

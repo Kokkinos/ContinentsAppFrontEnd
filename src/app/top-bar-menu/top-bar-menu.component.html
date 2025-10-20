@@ -2,7 +2,7 @@
 	<div [ngStyle]="{'background-image': 'url(../../assets/images/title-bg.svg)'}"
 		(click)="onHome()"
 		class="title">
-		{{ title }}
+		{{ title() }}
 	</div>
 	<div class="options">
 		<div class="option" (click)="onLanguages()">Countries</div>
