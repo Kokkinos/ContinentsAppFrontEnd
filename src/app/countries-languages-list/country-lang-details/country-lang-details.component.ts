@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UtilityService } from '../../shared/services/utility.service';
+import { Language } from '../../shared/models/models.model';
 
 @Component({
     selector: 'app-country-lang-details',
@@ -9,7 +10,7 @@ import { UtilityService } from '../../shared/services/utility.service';
 })
 export class CountryLangDetailsComponent {
 
-    countryLanguages: string[] = [];
+    countryLanguages: Language[] = [];
 
     constructor(private route: ActivatedRoute,
         private utilityService: UtilityService,) { }
@@ -18,9 +19,9 @@ export class CountryLangDetailsComponent {
         this.route.paramMap.subscribe(params => {
             const name = params.get('name');
             this.utilityService.setPageTitle(name);
-
-            const countryId = Number(params.get('id'));
-            this.utilityService.getCountryLanguages(countryId)
+            const code = params.get('code');
+            
+            this.utilityService.getCountryLanguages(code)
                 .subscribe(
                     data => {
                         this.countryLanguages = data;

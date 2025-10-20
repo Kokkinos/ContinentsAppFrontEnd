@@ -39,4 +39,12 @@ export class TopBarMenuComponent {
     onLanguages() {
         this.router.navigate(['/country-languages'])
     }
+
+    onStats() {
+        this.router.navigate(['/country-stats'])
+    }
+
+    onInfo() {
+        this.router.navigate(['/filtered-table'])
+    }
 }

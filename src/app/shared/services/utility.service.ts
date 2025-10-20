@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ICountry } from '../models/models.model';
+import { CountryInfo, ICountry, Language } from '../models/models.model';
+import { CountryStats } from '../models/models.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UtilityService {
-    private readonly apiUrl = 'http://localhost:8080';
+    private readonly apiUrl = 'http://localhost:8080/api';
 
     private pageTitleSubject = new BehaviorSubject<string>('App');
     pageTitle$: Observable<string> = this.pageTitleSubject.asObservable();
@@ -22,7 +23,12 @@ export class UtilityService {
         return this.http.get<any>(`${this.apiUrl}/countries`);
     }
 
-    getCountryLanguages(id: number): Observable<string[]> {
-        return this.http.get<any>(`${this.apiUrl}/countries/${id}/languages`);
+    getCountryLanguages(code: string): Observable<Language[]> {
+        return this.http.get<any>(`${this.apiUrl}/countries/${code}/languages`);
     }
+
+    getMaxGdpPerPopulation(): Observable<CountryStats[]> {
+      return this.http.get<any>(`${this.apiUrl}/stats/max-per-country`);
+    }
+
 }

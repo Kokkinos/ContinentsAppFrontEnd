@@ -42,7 +42,7 @@ export class CountriesLanguagesListComponent {
 
     }
 
-    onRowClick(id: number, name: string) {
-        this.router.navigate(['/country-languages/details', { id, name }])
+    onRowClick(code: string, name: string) {
+        this.router.navigate(['/country-languages/details', { code , name}])
     }
 }

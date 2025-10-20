@@ -2,7 +2,7 @@
     Languages: 
 @for(language of countryLanguages; track language){
 <div class="language">
-    {{language}}
+    {{language.language}} ({{language.official ? 'Official' : 'Unofficial'}})
 </div>
 }
 

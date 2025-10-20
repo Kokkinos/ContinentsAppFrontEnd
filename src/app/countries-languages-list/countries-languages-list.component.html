@@ -11,7 +11,7 @@
 		<ng-template pTemplate="body"
 			let-rowData
 			let-columns="columns">
-			<tr (click)="onRowClick(rowData.id, rowData.name)"
+			<tr (click)="onRowClick(rowData.countryCode2, rowData.name)"
 				class="row">
 				<td *ngFor="let col of columns">
 					{{ rowData[col.field] }}

@@ -1,0 +1,27 @@
+<div>
+    <p-dropdown [options]="regions" [(ngModel)]="selectedRegion" placeholder="Select a Region" (onChange)="onRegionChange()"></p-dropdown>
+</div>
+<table>
+    <thead>
+        <tr>
+            <td>Continent</td>
+            <td>Region</td>
+            <td>Country</td>
+            <td>Year</td>
+            <td>Population</td>
+            <td>GDP</td>
+        </tr>
+    </thead>
+    <tbody>
+        @for(countryInfo of countryInfoList; track countryInfo.continentName) {
+            <tr>
+                <td>{{ countryInfo.continentName }}</td>
+                <td>{{ countryInfo.regionName }}</td>
+                <td>{{ countryInfo.countryStatsDTO.countryName }}</td>
+                <td>{{ countryInfo.countryStatsDTO.year }}</td>
+                <td>{{ countryInfo.countryStatsDTO.population }}</td>
+                <td>{{ countryInfo.countryStatsDTO.gdp }}</td>
+            </tr>
+        }
+    </tbody>
+</table>
