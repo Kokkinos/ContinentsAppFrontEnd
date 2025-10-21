@@ -1,11 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { CountryInfo, Region } from '../shared/models/models.model';
+import { Component } from '@angular/core';
+
 import { UtilityService } from '../shared/services/utility.service';
 import { DropdownModule } from 'primeng/dropdown';
-import { FormsModule } from '@angular/forms';
-import { AppModule } from '../app.module';
-import { SelectItem } from 'primeng/api';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
 
 @Component({
   selector: 'app-filtered-table',
@@ -42,16 +41,8 @@ export class FilteredTableComponent {
     ]
   }
 
-  // this.cols = [
-  //   { field: 'name', header: 'Name' },
-  //   { field: 'countryId', header: 'Country Code' },
-  //   { field: 'year', header: 'Year' },
-  //   { field: 'population', header: 'Population' },
-  //   { field: 'gdp', header: 'GDP' }
-  // ];
-
-  onRegionChange(): void {
-    console.log(this.selectedRegion);
+  onRegionChange() {
+    this.utilityService.getCountryInfo(this.selectedRegion);
   }
 }
 

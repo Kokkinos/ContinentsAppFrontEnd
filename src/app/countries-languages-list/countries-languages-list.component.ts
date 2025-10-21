@@ -1,7 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { UtilityService } from '../shared/services/utility.service';
 import { Router } from '@angular/router';
-import { ICountry } from '../shared/models/models.model';
 
 @Component({
     selector: 'app-countries-languages-list',

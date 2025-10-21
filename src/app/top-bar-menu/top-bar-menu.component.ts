@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilityService } from '../shared/services/utility.service';
-import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-top-bar-menu',

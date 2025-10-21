@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UtilityService } from '../../shared/services/utility.service';
-import { Language } from '../../shared/models/models.model';
 
 @Component({
     selector: 'app-country-lang-details',

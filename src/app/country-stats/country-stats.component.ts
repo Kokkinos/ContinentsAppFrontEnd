@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CountryStats } from '../shared/models/models.model';
 import { UtilityService } from '../shared/services/utility.service';
 
 
@@ -31,5 +30,4 @@ export class CountryStatsComponent {
 
 		this.utilityService.getMaxGdpPerPopulation();
 	}
-
 }

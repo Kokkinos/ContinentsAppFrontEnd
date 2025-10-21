@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { CountryInfo, ICountry, Language, Region } from '../models/models.model';
 import { CountryStats } from '../models/models.model';
 
@@ -16,9 +15,6 @@ export class UtilityService {
     countryInfo = signal<CountryInfo[]>([]);
     regions = signal<Region[]>([]);
 
-    // private pageTitleSubject = new BehaviorSubject<string>('App');
-    // pageTitle$: Observable<string> = this.pageTitleSubject.asObservable();
-
     constructor(private http: HttpClient) { }
 
     setPageTitle(title: string): void {
@@ -26,14 +22,12 @@ export class UtilityService {
     }
 
     getCountries() {
-        // return this.http.get<any>(`${this.apiUrl}/countries`);
         this.http.get<any>(`${this.apiUrl}/countries`).subscribe(data => {
             this.countries.set(data);
         });
     }
 
     getCountryLanguages(code: string) {
-        // return this.http.get<any>(`${this.apiUrl}/countries/${code}/languages`);
         this.http.get<any>(`${this.apiUrl}/countries/${code}/languages`).subscribe(data => {
             this.languages.set(data);
         });
@@ -45,15 +39,25 @@ export class UtilityService {
         });
     }
 
-    getRegions(){
+    getRegions() {
         this.http.get<any>(`${this.apiUrl}/regions`).subscribe(data => {
             this.regions.set(data);
         });
     }
 
-    getCountryInfo() {
-        this.http.get<any>(`${this.apiUrl}/stats/by-region`).subscribe(data => {
+    // getCountryInfo() {
+    //     this.http.get<any>(`${this.apiUrl}/stats/by-region`).subscribe(data => {
+    //         this.countryInfo.set(data);
+    //     })
+    // }
+
+    getCountryInfo(regionName?: string) {
+        let url = `${this.apiUrl}/stats/by-region?from=2000&to=2020&page=0&size=20`;
+        if (regionName) {
+            url += `&regionName=${encodeURIComponent(regionName)}`;
+        }
+        this.http.get<any[]>(url).subscribe(data => {
             this.countryInfo.set(data);
-        })
+        });
     }
 }
